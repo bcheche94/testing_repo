@@ -37,6 +37,21 @@ app.get('/api/getitems', async (req, res) => {
         })
 })
 
+app.post('/api/makenewitem', async (req, res) => {
+    
+
+    const new_item_data = {
+    xuiname: req.body.xuiname,
+    email: req.body.email,
+    password: req.body.password
+    }
+
+    const new_item = await test_model_1.create(new_item_data)
+    return res.send(new_item)
+
+    
+})
+
 app.use(express.static(path.join(__dirname, '/client/dist')))
 
 app.get('*', (req, res) => {
